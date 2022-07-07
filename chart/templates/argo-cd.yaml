@@ -19,5 +19,11 @@ spec:
     server: "https://kubernetes.default.svc"
     namespace: {{ .Values.argoNamespace }}
   syncPolicy:
-    {{- toYaml .Values.argo.syncPolicy | nindent 4 }}
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
 ---
