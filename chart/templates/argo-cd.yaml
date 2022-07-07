@@ -13,10 +13,8 @@ spec:
     helm:
       releaseName: argocd
       version: v3
-      {{- with .Values.argo.values }}
-      values: |
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      valueFiles:
+      - https://raw.githubusercontent.com/JarenDamm/argocd/main/chart/values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: {{ .Values.argoNamespace }}
