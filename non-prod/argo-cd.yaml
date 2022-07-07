@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argocd
-  namespace: {{ .Values.argoNamespace }}
+  namespace: argocd
 spec:
   project: default
   source:
@@ -17,7 +17,7 @@ spec:
       - https://raw.githubusercontent.com/JarenDamm/argocd/main/non-prod/values.yaml
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: {{ .Values.argoNamespace }}
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
