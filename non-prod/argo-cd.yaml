@@ -14,7 +14,7 @@ spec:
       releaseName: argocd
       version: v3
       valueFiles:
-      - https://raw.githubusercontent.com/JarenDamm/argocd/main/values.yaml
+      - https://raw.githubusercontent.com/JarenDamm/argocd/main/non-prod/values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: {{ .Values.argoNamespace }}
