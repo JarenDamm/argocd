@@ -23,4 +23,4 @@ spec:
   syncPolicy:
     {{- toYaml .Values.argocd.syncPolicy | nindent 4 }}
 ---
-{{- end-}}
+{{- end}}
