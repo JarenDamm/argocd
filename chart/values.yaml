@@ -1,0 +1,14 @@
+argoNamespace: argocd
+argocd:
+  enabled: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+  namespace: argocd
+  value:
+    imagePullPolicy: IfNotPresent
