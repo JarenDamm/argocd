@@ -14,7 +14,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: catalystsquad/action-release-helm-chart@v2        
+      - uses: catalystsquad/action-release-helm-chart@v2
+        with:
+          token: ${{ secrets.AUTOMATION_PAT }}        
       - name: List files we have
         if: github.ref == 'main' && always()
         run: |
