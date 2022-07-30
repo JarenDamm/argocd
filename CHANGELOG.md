@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/JarenDamm/argocd/compare/v1.0.5...v1.0.6) (2022-07-30)
+
+
+### Bug Fixes
+
+* reflector ([#9](https://github.com/JarenDamm/argocd/issues/9)) ([80109b6](https://github.com/JarenDamm/argocd/commit/80109b654dfb1afec3d13fa102e856d7478cb491))
+
 ## [1.0.5](https://github.com/JarenDamm/argocd/compare/v1.0.4...v1.0.5) (2022-07-30)
 
 
