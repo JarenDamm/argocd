@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/JarenDamm/argocd/compare/v1.0.2...v1.0.3) (2022-07-30)
+
+
+### Bug Fixes
+
+* Hey another attempt ([#6](https://github.com/JarenDamm/argocd/issues/6)) ([6ab9219](https://github.com/JarenDamm/argocd/commit/6ab9219b38600d81c47c7ceb99e64484a7ed1ab4))
+
 ## [1.0.2](https://github.com/JarenDamm/argocd/compare/v1.0.1...v1.0.2) (2022-07-30)
 
 
