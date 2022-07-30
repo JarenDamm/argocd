@@ -1,4 +1,3 @@
-argoNamespace: argocd
 argocd:
   enabled: true
   syncPolicy:
