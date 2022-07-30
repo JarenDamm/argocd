@@ -4,7 +4,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: reflector
-  namespace: {{ .Values.argoNamespace }}
+  namespace: argocd
 spec:
   project: default
   source:
@@ -20,7 +20,7 @@ spec:
       {{- end }}
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: {{ .Values.reflector.namespace}}
+    namespace: {{ .Values.reflector.namespace }}
   syncPolicy:
     {{- toYaml .Values.reflector.syncPolicy | nindent 4 }}
 ---
