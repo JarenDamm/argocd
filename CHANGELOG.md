@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/JarenDamm/argocd/compare/v1.0.3...v1.0.4) (2022-07-30)
+
+
+### Bug Fixes
+
+* update values and add another tool ([#7](https://github.com/JarenDamm/argocd/issues/7)) ([6a617e6](https://github.com/JarenDamm/argocd/commit/6a617e6d23a0f5d519bc68ff341b73b0869a731b))
+
 ## [1.0.3](https://github.com/JarenDamm/argocd/compare/v1.0.2...v1.0.3) (2022-07-30)
 
 
