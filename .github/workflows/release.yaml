@@ -1,0 +1,21 @@
+name: Release
+on:
+  pull_request:
+    types:
+      - closed 
+    branches:
+      - main
+    paths:    
+      - 'chart/**'
+jobs:
+  build-and-push-to-helm:
+    name: Build Helm Package and Release the asset to Github
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: catalystsquad/action-release-helm-chart@v2        
+      - name: List files we have
+        if: github.ref == 'main' && always()
+        run: |
+          ls -al .

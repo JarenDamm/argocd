@@ -1,0 +1,27 @@
+name: Pull Request
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'chart/**'
+jobs:
+  conventional-commits-pr:
+    if: "github.event.pull_request.draft == false"
+    name: Validate Conventional Commits PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: crazy-max/ghaction-dump-context@v1
+      - uses: catalystsquad/action-validate-conventional-commits-pr@v1
+      
+  lint:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    name: Validate Pull Request
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Test Runner
+        run: |
+          helm version
+          helm lint ./chart
