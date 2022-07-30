@@ -17,7 +17,8 @@ jobs:
           echo "::set-output name=rawversion::$subval"
       - name: Push Chart
         uses: catalystsquad/action-upload-chart-git@v1
-        with:          
+        with:
+          token: ${{ secrets.AUTOMATION_PAT }}          
           tag: ${{ github.event.release.tag_name }}
           # This assumes the normal `helm package` result of `chartname-semver.tgz`
           release-asset-name: "argomanage-${{steps.get-rawversion.outputs.rawversion}}.tgz"
