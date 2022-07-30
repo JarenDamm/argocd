@@ -31,8 +31,8 @@ server:
     configManagementPlugins: |-
       - name: argocd-vault-plugin
         generate:
-        command: ["argocd-vault-plugin"]
-        args: ["generate", "./"]
+          command: ["argocd-vault-plugin"]
+          args: ["generate", "./"]
     repositories: |
       - type: helm
         name: stable
