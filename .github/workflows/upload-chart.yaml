@@ -1,0 +1,28 @@
+name: Upload Released Chart
+on:
+  release:
+    types:
+      - published
+jobs:
+  upload-chart-git:
+    name: Push the newly released package to ACR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump Context
+        uses: crazy-max/ghaction-dump-context@v1
+      - id: get-rawversion
+        name: Get the raw version number
+        run: |
+          subval=$(echo ${{ github.event.release.tag_name }} | cut -c 2-)
+          echo "::set-output name=rawversion::$subval"
+      - name: Push Chart
+        uses: catalystsquad/action-upload-chart-git@v1
+        with:          
+          tag: ${{ github.event.release.tag_name }}
+          # This assumes the normal `helm package` result of `chartname-semver.tgz`
+          release-asset-name: "argomanage-${{steps.get-rawversion.outputs.rawversion}}.tgz"
+          chart-repository: "${{ github.repository_owner }}/charts"
+      - name: List files we have
+        if: always()
+        run: |
+          ls -al .
