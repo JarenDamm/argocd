@@ -67,3 +67,4 @@ reflector:
   namespace: reflector
   values:
     imagePullPolicy: IfNotPresent
+    
