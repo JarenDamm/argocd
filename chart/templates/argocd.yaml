@@ -1,0 +1,26 @@
+{{if .Values.argocd.enabled}}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: {{ .Values.argoNamespace }}
+spec:
+  project: default
+  source:
+    chart: argo-cd
+    repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: 4.10.2
+    helm:
+      releaseName: argocd
+      version: v3
+      {{- with .Values.argocd.values }}
+      values: |
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
+  syncPolicy:
+    {{- toYaml .Values.argocd.syncPolicy | nindent 4 }}
+---
+{{- end}}
