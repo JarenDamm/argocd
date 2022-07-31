@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/JarenDamm/argocd/compare/v1.2.1...v1.3.0) (2022-07-31)
+
+
+### Features
+
+* Try Kuma Install ([#16](https://github.com/JarenDamm/argocd/issues/16)) ([a47703e](https://github.com/JarenDamm/argocd/commit/a47703e5c3fc1bbcf2e5848640fc0e710d6a02ee))
+
 ## [1.2.1](https://github.com/JarenDamm/argocd/compare/v1.2.0...v1.2.1) (2022-07-31)
 
 
