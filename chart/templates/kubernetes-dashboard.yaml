@@ -1,0 +1,27 @@
+{{if .Values.kube-dashboard.enabled}}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubernetes-dashboard
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: kubernetes-dashboard
+    repoURL: https://kubernetes.github.io/dashboard/
+    targetRevision: 5.7.0
+    helm:
+      releaseName: kubernetes-dashboard
+      version: v3
+      {{- with .Values.kube-dashboard.values }}
+      values: |
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: {{ .Values.kube-dashboard.namespace }}
+  syncPolicy:
+    {{- toYaml .Values.kube-dashboard.syncPolicy | nindent 4 }}
+---
+{{- end }}
