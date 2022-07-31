@@ -76,5 +76,4 @@ kube-dashboard:
       - PruneLast=true
   namespace: kubernetes-dashboard
   values:
-    imagePullPolicy: IfNotPresent
-    
+    imagePullPolicy: IfNotPresent    
