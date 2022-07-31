@@ -1,0 +1,27 @@
+{{if .Values.linkerd.enabled}}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: linkerd
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: linkerd2
+    repoURL: https://helm.linkerd.io/stable
+    targetRevision: {{ .Values.linkerd.targetRevision | quote }}
+    helm:
+      releaseName: linkerd
+      version: v3
+      {{- with .Values.linkerd.values }}
+      values: |
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: {{ .Values.linkerd.namespace }}
+  syncPolicy:
+    {{- toYaml .Values.linkerd.syncPolicy | nindent 4 }}
+---
+{{- end }}

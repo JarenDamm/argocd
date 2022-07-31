@@ -76,4 +76,51 @@ kubedashboard:
       - PruneLast=true
   namespace: kubernetes-dashboard
   values:
-    imagePullPolicy: IfNotPresent    
+    imagePullPolicy: IfNotPresent
+    service:
+      externalPort: 8080
+    resources: 
+      limits:
+        cpu: 200m
+linkerd:
+  enabled: true
+  rotateCerts: false
+  targetRevision: "~2.11.4"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+  namespace: linkerd
+  values:
+    proxy:
+      resources:
+        cpu:
+          request: 10m
+linkerdViz:
+  enabled: true
+  targetRevision: "~2.11.1"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+  namespace: linkerd-viz
