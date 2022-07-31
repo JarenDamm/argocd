@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/JarenDamm/argocd/compare/v1.2.0...v1.2.1) (2022-07-31)
+
+
+### Bug Fixes
+
+* update Linkerd ([#15](https://github.com/JarenDamm/argocd/issues/15)) ([3a4b151](https://github.com/JarenDamm/argocd/commit/3a4b15101f2c729c3f640bfd519dab1f92a7b9c6))
+
 # [1.2.0](https://github.com/JarenDamm/argocd/compare/v1.1.0...v1.2.0) (2022-07-31)
 
 
