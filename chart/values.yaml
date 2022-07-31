@@ -37,9 +37,7 @@ argocd:
         volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
-    server:
-      extraArgs:
-        - --insecure
+    server:      
       config:
         configManagementPlugins: |-
           - name: argocd-vault-plugin
