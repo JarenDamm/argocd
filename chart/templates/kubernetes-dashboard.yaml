@@ -1,4 +1,4 @@
-{{if .Values.kube-dashboard.enabled}}
+{{if .Values.kubedashboard.enabled}}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -14,14 +14,14 @@ spec:
     helm:
       releaseName: kubernetes-dashboard
       version: v3
-      {{- with .Values.kube-dashboard.values }}
+      {{- with .Values.kubedashboard.values }}
       values: |
         {{- toYaml . | nindent 8 }}
       {{- end }}
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: {{ .Values.kube-dashboard.namespace }}
+    namespace: {{ .Values.kubedashboard.namespace }}
   syncPolicy:
-    {{- toYaml .Values.kube-dashboard.syncPolicy | nindent 4 }}
+    {{- toYaml .Values.kubedashboard.syncPolicy | nindent 4 }}
 ---
 {{- end }}

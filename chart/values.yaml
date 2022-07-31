@@ -64,7 +64,7 @@ reflector:
   namespace: reflector
   values:
     imagePullPolicy: IfNotPresent
-kube-dashboard:
+kubedashboard:
   enabled: true
   syncPolicy:
     automated:
