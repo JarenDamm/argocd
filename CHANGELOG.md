@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/JarenDamm/argocd/compare/v1.0.7...v1.0.8) (2022-07-31)
+
+
+### Bug Fixes
+
+* Update bad Alignment ([#11](https://github.com/JarenDamm/argocd/issues/11)) ([33542d0](https://github.com/JarenDamm/argocd/commit/33542d0e7db9cd68518cec288794e4800cb50782))
+
 ## [1.0.7](https://github.com/JarenDamm/argocd/compare/v1.0.6...v1.0.7) (2022-07-31)
 
 
