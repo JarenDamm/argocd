@@ -1,0 +1,27 @@
+{{if .Values.linkerdViz.enabled}}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: linkerd-viz
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: linkerd-viz
+    repoURL: https://helm.linkerd.io/stable
+    targetRevision: {{ .Values.linkerdViz.targetRevision | quote }}
+    helm:
+      releaseName: linkerd-viz
+      version: v3
+      {{- with .Values.linkerdViz.values }}
+      values: |
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: {{ .Values.linkerdViz.namespace }}
+  syncPolicy:
+    {{- toYaml .Values.linkerdViz.syncPolicy | nindent 4 }}
+---
+{{- end }}
