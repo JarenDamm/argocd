@@ -64,4 +64,16 @@ reflector:
   namespace: reflector
   values:
     imagePullPolicy: IfNotPresent
-    
+kubedashboard:
+  enabled: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+  namespace: kubernetes-dashboard
+  values:
+    imagePullPolicy: IfNotPresent    
