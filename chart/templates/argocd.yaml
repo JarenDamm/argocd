@@ -18,8 +18,9 @@ spec:
       values: |
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  destination:
     server: "https://kubernetes.default.svc"
-    namespace: argocd
+    namespace: {{ .Values.argocd.namespace }}
   syncPolicy:
     {{- toYaml .Values.argocd.syncPolicy | nindent 4 }}
 ---
