@@ -106,6 +106,57 @@ linkerd:
       resources:
         cpu:
           request: 10m
+    identityTrustAnchorsPEM: |
+    installNamespace: false
+  ignoreDifferences:
+    - group: batch
+      jsonPointers:
+        - /spec/schedule
+      kind: CronJob
+      name: linkerd-heartbeat
+    - group: ''
+      jsonPointers:
+        - /data/tls.crt
+        - /data/tls.key
+      kind: Secret
+      name: linkerd-policy-validator-k8s-tls
+    - group: ''
+      jsonPointers:
+        - /data/tls.crt
+        - /data/tls.key
+      kind: Secret
+      name: linkerd-proxy-injector-k8s-tls
+    - group: ''
+      jsonPointers:
+        - /data/tls.crt
+        - /data/tls.key
+      kind: Secret
+      name: linkerd-sp-validator-k8s-tls
+    - group: admissionregistration.k8s.io
+      jqPathExpressions:
+        - .webhooks[]?.clientConfig.caBundle
+      kind: MutatingWebhookConfiguration
+      name: linkerd-proxy-injector-webhook-config
+    - group: admissionregistration.k8s.io
+      jqPathExpressions:
+        - .webhooks[]?.clientConfig.caBundle
+      kind: ValidatingWebhookConfiguration
+      name: linkerd-policy-validator-webhook-config
+    - group: admissionregistration.k8s.io
+      jqPathExpressions:
+        - .webhooks[]?.clientConfig.caBundle
+      kind: ValidatingWebhookConfiguration
+      name: linkerd-sp-validator-webhook-config
+    - group: apps
+      jqPathExpressions:
+        - .spec.template.metadata.annotations."checksum/config"
+      kind: Deployment
+      name: linkerd-destination
+    - group: apps
+      jqPathExpressions:
+        - .spec.template.metadata.annotations."checksum/config"
+      kind: Deployment
+      name: linkerd-proxy-injector
 linkerdViz:
   enabled: true
   targetRevision: "~2.11.1"
@@ -124,3 +175,34 @@ linkerdViz:
         factor: 2
         maxDuration: 3m
   namespace: linkerd-viz
+  ignoreDifferences:
+    - jsonPointers:
+        - /data/tls.crt
+        - /data/tls.key
+      kind: Secret
+      name: tap-injector-k8s-tls
+    - jsonPointers:
+        - /data/tls.crt
+        - /data/tls.key
+      kind: Secret
+      name: tap-k8s-tls
+    - group: admissionregistration.k8s.io
+      jqPathExpressions:
+        - .webhooks[]?.clientConfig.caBundle
+      kind: MutatingWebhookConfiguration
+      name: linkerd-tap-injector-webhook-config
+    - group: apps
+      jqPathExpressions:
+        - .spec.template.metadata.annotations."checksum/config"
+      kind: Deployment
+      name: tap
+    - group: apps
+      jqPathExpressions:
+        - .spec.template.metadata.annotations."checksum/config"
+      kind: Deployment
+      name: tap-injector
+    - group: apiregistration.k8s.io
+      jsonPointers:
+        - /spec/caBundle
+      kind: APIService
+      name: v1alpha1.tap.linkerd.io

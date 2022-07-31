@@ -22,6 +22,10 @@ spec:
     server: "https://kubernetes.default.svc"
     namespace: {{ .Values.linkerd.namespace }}
   syncPolicy:
-    {{- toYaml .Values.linkerd.syncPolicy | nindent 4 }}
+  {{- toYaml .Values.linkerd.syncPolicy | nindent 4 }}
+  {{- with .Values.linkerd.ignoreDifferences }}
+  ignoreDifferences:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 ---
 {{- end }}
