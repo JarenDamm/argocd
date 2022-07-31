@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/JarenDamm/argocd/compare/v1.0.9...v1.1.0) (2022-07-31)
+
+
+### Features
+
+* Add Kubernetes Dashboard ([#13](https://github.com/JarenDamm/argocd/issues/13)) ([470ffa5](https://github.com/JarenDamm/argocd/commit/470ffa575562889e3d3c3b038efdf9eadfd15094))
+
 ## [1.0.9](https://github.com/JarenDamm/argocd/compare/v1.0.8...v1.0.9) (2022-07-31)
 
 
