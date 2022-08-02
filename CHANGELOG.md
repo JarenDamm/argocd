@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/JarenDamm/argocd/compare/v1.3.0...v1.4.0) (2022-08-02)
+
+
+### Features
+
+* Add Linkerd for testing ([#17](https://github.com/JarenDamm/argocd/issues/17)) ([3cf3c85](https://github.com/JarenDamm/argocd/commit/3cf3c8579fff3bc0b47eae9fb23821d9f8551e80))
+
 # [1.3.0](https://github.com/JarenDamm/argocd/compare/v1.2.1...v1.3.0) (2022-07-31)
 
 
