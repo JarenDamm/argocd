@@ -1,0 +1,16 @@
+{{- if and (.Values.linkerd.enabled) (.Values.linkerd.rotateCerts) }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: linkerd-trust-anchor
+  namespace: linkerd
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+stringData:
+  tls.crt: |
+    {{- .Values.linkerd.values.identityTrustAnchorsPEM | trim | nindent 4 }}
+data:
+  tls.key: |
+    {{- .Values.linkerd.trustAnchor.key | trim | nindent 4 }}
+type: kubernetes.io/tls
+{{- end }}
