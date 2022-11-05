@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istiod
+  name: istio-gateway
   namespace: argocd
 spec:
   project: default
   source:
-    chart: istiod
+    chart: gateway
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.15.3
     helm:
-      releaseName: istiod
+      releaseName: gateway
       version: v3      
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: istio-system
+    namespace: istio-ingress
   syncPolicy:    
     automated:
       prune: true
