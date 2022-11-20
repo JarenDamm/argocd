@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    chart: hashicorp
+    chart: vault
     repoURL: https://helm.releases.hashicorp.com
-    targetRevision: 1.12.0
+    targetRevision: 0.22.1
     helm:
       releaseName: vault
       version: v3
