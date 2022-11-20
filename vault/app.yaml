@@ -6,11 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    chart: hashicorp/vault
+    chart: hashicorp
     repoURL: https://helm.releases.hashicorp.com
     targetRevision: 1.12.0
     helm:
-      releaseName: hashicorp/vault
+      releaseName: vault
       version: v3
       valueFiles:
         - https://raw.githubusercontent.com/JarenDamm/argocd/main/vault/values.yaml      
